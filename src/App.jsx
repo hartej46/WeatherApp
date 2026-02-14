@@ -3,7 +3,7 @@ import { currentWeather } from './services/WeatherApi'
 import SearchBar from './SearchBox/SearchBox'
 import Welcome from './LandingPage/LandingPage'
 import { WeatherCard } from './WeatherCard/WeatherCard'
-import Loading from '../../quote_project/src/Loding/Loading'
+import Loading from './Loading/Loading'
 import './App.css'
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
     }
   }
 
-   const handleCity = (cityName) => {
+  const handleCity = (cityName) => {
     setCity(cityName)
     handleSearch(cityName)
   }
@@ -40,27 +40,27 @@ function App() {
       <div className='app'>
         <main>
 
-            {!loading && !error && !weather && (
-          <Welcome onCitySelect={handleCity} />
-        )}
-        <SearchBar
-          city={city}
-          setCity={setCity}
-          onSearch={(searchCity) => handleSearch(searchCity)}
-        />
-        {error && <p>{error}</p>}
+          {!loading && !error && !weather && (
+            <Welcome onCitySelect={handleCity} />
+          )}
+          <SearchBar
+            city={city}
+            setCity={setCity}
+            onSearch={(searchCity) => handleSearch(searchCity)}
+          />
+          {error && <p>{error}</p>}
 
-        {loading && <Loading/>}
+          {loading && <Loading />}
 
-      
 
-        {weather && !loading && (
-          <>
-            <WeatherCard weather={weather} />
 
-          </>
-        )}
-      </main>
+          {weather && !loading && (
+            <>
+              <WeatherCard weather={weather} />
+
+            </>
+          )}
+        </main>
 
       </div>
     </>
